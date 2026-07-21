@@ -7,4 +7,4 @@ def run():
     print("User Authentication Feature Added")
     return "Hello World from Main Branch"
 
-app.run()
+app.run(host="0.0.0.0", port=5000)
