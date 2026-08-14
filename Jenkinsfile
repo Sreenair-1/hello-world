@@ -10,7 +10,10 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t jenkins-demo-app .'
+                bat 'where docker'
+                bat 'docker --version'
+                bat 'docker info'
+                bat 'docker build -t jenkins-demo-app:latest .'
             }
         }
 
