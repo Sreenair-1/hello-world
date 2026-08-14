@@ -10,9 +10,8 @@ pipeline {
 
         stage('Check Docker') {
             steps {
-                bat 'echo PATH=%PATH%'
                 bat 'where docker'
-                bat 'dir "C:\\Users\\YOUR_USERNAME\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe"'
+                bat 'docker --version'
             }
         }
 
