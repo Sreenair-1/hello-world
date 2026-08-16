@@ -20,26 +20,6 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo 'Testing Docker image...'
-                sh '''
-                    docker rm -f test-container || true
-
-                    docker run -d \
-                        --name test-container \
-                        -p 5001:5000 \
-                        jenkins-demo-app:latest
-
-                    sleep 5
-
-                    curl -f http://localhost:5001/test
-
-                    docker rm -f test-container
-                '''
-            }
-        }
-
-        stage('Test') {
-            steps {
                 sh '''
                     docker rm -f test-container || true
 
