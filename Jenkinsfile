@@ -38,17 +38,21 @@ pipeline {
             }
         }
 
-        stage('Deliver') {
+        stage('Test') {
             steps {
-                echo 'Starting application container...'
-
                 sh '''
-                    docker rm -f jenkins-demo-app || true
+                    docker rm -f test-container || true
 
                     docker run -d \
-                        --name jenkins-demo-app \
-                        -p 5000:5000 \
+                        --name test-container \
+                        --network jenkins-network \
                         jenkins-demo-app:latest
+
+                    sleep 5
+
+                    curl -f http://test-container:5000/test
+
+                    docker rm -f test-container
                 '''
             }
         }
